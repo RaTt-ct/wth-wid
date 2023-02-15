@@ -8,7 +8,7 @@ let Api_Key = "4b080fa600aeaf894507963c0125c05b";
 
 export default new Vuex.Store({
   state: {
-    cities: null,
+    cities: [],
   },
 
   getters: {
@@ -30,8 +30,13 @@ export default new Vuex.Store({
     },
 
     addCity: (state, payload) => {
-      state.cities.push(payload);
-      localStorage.setItem("CityInfo", JSON.stringify(state.cities));
+      // if (!localStorage.getItem("CityInfo")) {
+      //   state.cities = payload;
+      //   localStorage.setItem("CityInfo", JSON.stringify(state.cities))
+      // } else {
+        state.cities.push(payload);
+        localStorage.setItem("CityInfo", JSON.stringify(state.cities));
+      // }
     },
 
     moveCity: (state, payload) => {
@@ -45,7 +50,7 @@ export default new Vuex.Store({
       cities.splice(payload, 1);
       if (cities.length === 0) {
         localStorage.removeItem("CityInfo");
-        state.cities = null;
+        state.cities = [];
       } else {
         localStorage.setItem("CityInfo", JSON.stringify(cities));
         state.cities = cities;
