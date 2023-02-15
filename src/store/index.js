@@ -30,13 +30,8 @@ export default new Vuex.Store({
     },
 
     addCity: (state, payload) => {
-      // if (!localStorage.getItem("CityInfo")) {
-      //   state.cities = payload;
-      //   localStorage.setItem("CityInfo", JSON.stringify(state.cities))
-      // } else {
-        state.cities.push(payload);
-        localStorage.setItem("CityInfo", JSON.stringify(state.cities));
-      // }
+      state.cities.push(payload);
+      localStorage.setItem("CityInfo", JSON.stringify(state.cities));
     },
 
     moveCity: (state, payload) => {
